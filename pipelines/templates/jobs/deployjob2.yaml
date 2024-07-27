@@ -1,0 +1,17 @@
+parameters:
+  - name: stage
+    type: string
+  - name: dependsOn
+    type: object
+    default: []
+  - name: productList
+    type: object
+
+jobs:
+  - job: "myJob_${{parameters.stage}}"
+    timeoutInMinutes: 10
+    dependsOn:
+      - ${{each component in parameters.productList}}:
+          - "A_${{component}}"
+    steps:
+      - bash: echo "Hello world"

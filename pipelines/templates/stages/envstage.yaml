@@ -1,0 +1,16 @@
+parameters:
+  - name: productList
+    type: object
+
+stages:
+  - template: deploystage.yaml
+    parameters:
+      productList: "${{parameters.productList}}"
+      stage: "dev"
+      dependsOn: []
+
+  - template: deploystage.yaml
+    parameters:
+      productList: "${{parameters.productList}}"
+      stage: "qa"
+      dependsOn: "dev"

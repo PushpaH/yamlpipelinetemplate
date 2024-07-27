@@ -1,0 +1,9 @@
+steps:
+  - checkout: self
+
+  - task: PowerShell@2
+    displayName: Print Message
+    inputs:
+      targetType: "inline"
+      script: |
+        Write-Host "This is deploy step 01"

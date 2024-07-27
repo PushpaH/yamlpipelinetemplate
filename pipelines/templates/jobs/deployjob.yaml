@@ -1,0 +1,16 @@
+parameters:
+  - name: stage
+    type: string
+  - name: dependsOn
+    type: object
+    default: []
+  - name: productList
+    type: object
+
+jobs:
+  - job: "A_${{parameters.productList}}"
+    steps:
+      - template: ../steps/deploystep.yaml
+        parameters:
+          stage: "${{parameters.stage}}"
+          productList: "${{parameters.productList}}"

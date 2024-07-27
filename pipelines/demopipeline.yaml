@@ -1,0 +1,16 @@
+pool:
+  Azure Pipelines
+
+parameters:
+  - name: productList
+    type: object
+    default: [
+      'productA',
+      'productB',
+      'productC'
+    ]  
+  
+stages:
+ - template: templates/stages/envstage.yaml
+   parameters:
+    productList: '${{parameters.productList}}'   

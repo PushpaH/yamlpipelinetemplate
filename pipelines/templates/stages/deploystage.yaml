@@ -1,0 +1,25 @@
+parameters:
+  - name: stage
+    type: string
+  - name: dependsOn
+    type: object
+    default: []
+  - name: productList
+    type: object
+
+stages:
+  - stage: "${{parameters.stage}}"
+    dependsOn: "${{parameters.dependsOn}}"
+    condition: succeeded()
+
+    jobs:
+      - ${{each component in parameters.productList}}:
+          - template: ../jobs/deployjob.yaml
+            parameters:
+              stage: "${{parameters.stage}}"
+              productList: "${{component}}"
+
+      - template: ../jobs/deployjob2.yaml
+        parameters:
+          stage: "${{parameters.stage}}"
+          productList: "${{parameters.productList}}"
