@@ -1,4 +1,4 @@
-This repo consist with sample yaml templates that explains how to use loops to generate multiple jobs in Azure DevOps pipeline.
+The project consists of sample YAML templates that explain how to use loops to generate multiple jobs in an Azure DevOps pipeline.
 
 - demopipeline.yaml
 
